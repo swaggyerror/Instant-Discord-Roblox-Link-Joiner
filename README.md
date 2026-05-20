@@ -18,7 +18,7 @@
    **THEN:**
    
    Open the Vencord Folder created on your desktop, Open the src folder, and create a new folder. Call it "userplugins". If you already have this folder you do not need to do it.
-   Inside of the userplugins folder, place the InstantRobloxJoin folder that you downloaded from this page.
+   Inside of the userplugins folder, Download and Place the InstantRobloxJoin folder inside the userplugins folder.
    
    Go back to your terminal and type:
    * cd Vencord
