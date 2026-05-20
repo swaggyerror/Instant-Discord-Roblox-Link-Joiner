@@ -16,6 +16,7 @@
    * git clone https://github.com/Vendicated/Vencord
    
    **THEN:**
+   
    Open the Vencord Folder created on your desktop, Open the src folder, and create a new folder. Call it "userplugins". If you already have this folder you do not need to do it.
    Inside of the userplugins folder, place the InstantRobloxJoin folder that you downloaded from this page.
    
@@ -25,4 +26,4 @@
    * pnpm install
    * pnpm build
    * pnpm inject
-   This will Close your discord. Re Open discord and go to your plugins settings and search Instant Roblox Join and enable it. Thats all!
+   This will Close your discord. Re Open discord and go to your plugins settings and search Instant Roblox Join and enable it. Thats all.
