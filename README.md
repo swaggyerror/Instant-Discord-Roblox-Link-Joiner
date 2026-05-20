@@ -6,7 +6,7 @@
 2. [Install Node.js (Required)](https://nodejs.org/en)
    * After installing Node.js, open Terminal and run:
    
-    npm install -g pnpm
+     npm install -g pnpm
    
 3. [Install Git (Required)](https://git-scm.com/downloads)
 
