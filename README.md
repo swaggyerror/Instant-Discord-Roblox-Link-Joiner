@@ -1,6 +1,6 @@
 # Instant-Discord-Roblox-Link-Joiner
 
-## Known Issue: Either the Link is Invalid or because share links sometimes don't work after a while of use. Close roblox and wait a bit then it should work again.
+### Known Issue: Either the Link is Invalid or because share links sometimes don't work after a while of use. Close roblox and wait a bit then it should work again.
 
 
 **HOW TO INSTALL:**
