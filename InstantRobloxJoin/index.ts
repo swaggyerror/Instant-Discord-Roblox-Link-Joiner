@@ -1,6 +1,8 @@
 import definePlugin from "@utils/types";
 import * as Native from "./native";
 
+let originalWindowOpen: typeof window.open;
+
 type LaunchTarget = {
     placeId: string | null;
     linkCode: string;
@@ -10,11 +12,21 @@ let launchQueue = Promise.resolve();
 
 function launch(url: string) {
     console.log("[InstantRobloxJoin] Launch:", url);
-    window.open(url, "_blank");
+    originalWindowOpen.call(window, url, "_blank");
 }
 
 function isRobloxHost(hostname: string) {
     return hostname === "roblox.com" || hostname.endsWith(".roblox.com");
+}
+
+function interceptUrl(url: string): boolean {
+    const launchTarget = parseLaunchTarget(url);
+
+    if (!launchTarget) return false;
+
+    queueLaunch(launchTarget);
+
+    return true;
 }
 
 function parseLaunchTarget(href: string): LaunchTarget | null {
@@ -73,13 +85,13 @@ function queueLaunch(target: LaunchTarget) {
 }
 
 function handleClick(event: MouseEvent) {
-    if (event.defaultPrevented || event.button !== 0) return;
+    if (event.button !== 0) return;
     if (event.ctrlKey || event.shiftKey || event.altKey || event.metaKey) return;
 
     const target = event.target as HTMLElement | null;
     if (!target) return;
 
-    if (target.closest("input, textarea, select, button, [contenteditable='true']")) {
+    if (target.closest("input, textarea, select, [contenteditable='true']")) {
         return;
     }
 
@@ -108,10 +120,27 @@ export default definePlugin({
 
     start() {
         document.addEventListener("click", handleClick, true);
+
+        originalWindowOpen = window.open;
+
+        window.open = function(url?: string | URL, target?: string, features?: string) {
+            if (
+                typeof url === "string" &&
+                (url.startsWith("http://") || url.startsWith("https://"))
+            ) {
+                if (interceptUrl(url)) {
+                    return null;
+                }
+            }
+
+            return originalWindowOpen.call(window, url, target, features);
+        };
+
         console.log("[InstantRobloxJoin] loaded");
     },
 
     stop() {
         document.removeEventListener("click", handleClick, true);
+        window.open = originalWindowOpen;
     }
 });
