@@ -1,10 +1,10 @@
 import { execFile } from "child_process";
 
 const ROBLOX_PLAYER_PROCESS = "RobloxPlayerBeta.exe";
-const POLL_INTERVAL_MS = 200;
-const EXIT_TIMEOUT_MS = 7000;
-const GRACEFUL_EXIT_TIMEOUT_MS = 2500;
-const POST_EXIT_DELAY_MS = 500;
+const POLL_INTERVAL_MS = 100;
+const EXIT_TIMEOUT_MS = 5000;
+const GRACEFUL_EXIT_TIMEOUT_MS = 1500;
+const POST_EXIT_DELAY_MS = 300;
 
 function execTask(file: string, args: string[]): Promise<string> {
     return new Promise((resolve, reject) => {
