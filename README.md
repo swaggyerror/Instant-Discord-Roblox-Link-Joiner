@@ -1,4 +1,4 @@
-# OP Biome Plugins
+# OP Biome Plugins for Sol's RNG
 
 **What are they**
 1. Instant Roblox Join basically skips the entire process of opening the roblox browser and loading everything. It will directly open the roblox private server link. If you already have roblox open and click a link, it will take a bit to close roblox and then open it, but its still overall faster. Don't Spam click the link if you think it doesn't work.
